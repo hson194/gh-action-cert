@@ -12,11 +12,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    inputs:
-      name:
-        description: "Your name"
-        required: true
-        default: "World"
+    # inputs:
+    #   name:
+    #     description: "Your name"
+    #     required: true
+    #     default: "World"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -40,5 +40,10 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-      - name: Greet
-        run: echo Hello, ${{ github.event.inputs.name }}!
+      # - name: Greet
+      #   run: echo Hello, ${{ github.event.inputs.name }}!
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Testing..."
