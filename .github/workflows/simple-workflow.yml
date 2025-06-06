@@ -49,8 +49,16 @@ jobs:
     steps:
       - run: echo "Testing after build..."
 
-  deploy:
+  deploy-success:
     runs-on: ubuntu-latest
     needs: test
+    if: needs.test.result == 'success'
     steps:
-      - run: echo "Deploying after test..."
+      - run: echo "Deploying because tests passed!"
+
+  deploy-failure:
+    runs-on: ubuntu-latest
+    needs: test
+    if: needs.test.result == 'failure'
+    steps:
+      - run: echo "Notifying because tests failed!"
